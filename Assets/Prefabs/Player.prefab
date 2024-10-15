@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 7610147452065932680}
   - component: {fileID: 5954126933435902232}
   - component: {fileID: 4899492893827679366}
+  - component: {fileID: -2527804271511457703}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -120,7 +121,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5cbff1e1fc3081443b8661a0943580a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 20
+  speed: 10
   rb: {fileID: 0}
   sprite: {fileID: 0}
   animator: {fileID: 4899492893827679366}
@@ -200,3 +201,16 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &-2527804271511457703
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2857784882270633263}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffd9920a20bc8c94eb4201ad58dbc4a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentSceneName: 

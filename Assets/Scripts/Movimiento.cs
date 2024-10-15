@@ -14,6 +14,7 @@ public class Movimiento : MonoBehaviour
     public GameObject myPrefab;
 
 
+
     void Start()
     {
         rb = gameObject.GetComponent<Rigidbody2D>();
@@ -67,7 +68,7 @@ public class Movimiento : MonoBehaviour
         if (collision.gameObject.tag == "Hazard") {
             sprite.flipY = false;
             if (rb.gravityScale < 0) rb.gravityScale *= -1;
-            Instantiate(myPrefab, new Vector3(-22, -5, 0), Quaternion.identity);            
+            Instantiate(myPrefab, GameObject.FindGameObjectWithTag("SpawnPoint").transform.position, Quaternion.identity);            
             Destroy(gameObject);
         }
     }
