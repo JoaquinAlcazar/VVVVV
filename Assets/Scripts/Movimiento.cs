@@ -14,9 +14,17 @@ public class Movimiento : MonoBehaviour
     public GameObject myPrefab;
 
 
+    private GameObject copy;
+
+    void Awake()
+    {
+        
+    }
 
     void Start()
     {
+        
+
         rb = gameObject.GetComponent<Rigidbody2D>();
         sprite = gameObject.GetComponent<SpriteRenderer>();
         animator = gameObject.GetComponent<Animator>();
@@ -27,6 +35,7 @@ public class Movimiento : MonoBehaviour
 
     void Update()
     {
+        
 
         //Mueve al personaje cuando se pulsa D o A en la direccíón correspondiente
         if (Input.GetKey(KeyCode.D))

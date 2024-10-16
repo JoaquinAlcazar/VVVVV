@@ -7,6 +7,8 @@ using UnityEngine.U2D;
 public class PlayerSceneLoader : MonoBehaviour
 {
     public string currentSceneName;
+    public GameObject player;
+    public GameObject currentBackPoint;
     private void Start()
     {
         currentSceneName = SceneManager.GetActiveScene().name;
@@ -21,6 +23,32 @@ public class PlayerSceneLoader : MonoBehaviour
             {
                 SceneManager.LoadScene("Nivel2");
             }
+            if (currentSceneName == "Nivel2")
+            {
+                SceneManager.LoadScene("Nivel3");
+            }
+            if (currentSceneName == "Nivel3")
+            {
+                SceneManager.LoadScene("Nivel4");
+            }
         }
+
+        if(collision.gameObject.name == "LevelBack")
+        {
+            if (currentSceneName == "Nivel2")
+            {
+                SceneManager.LoadScene("Nivel1");
+            }
+            if (currentSceneName == "Nivel3")
+            {
+                SceneManager.LoadScene("Nivel2");
+            }
+            if (currentSceneName == "Nivel4")
+            {
+                SceneManager.LoadScene("Nivel3");
+            }
+        }
+
+
     }
 }
