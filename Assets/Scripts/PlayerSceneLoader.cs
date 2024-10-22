@@ -3,15 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.U2D;
+using static UnityEditor.PlayerSettings;
 
 public class PlayerSceneLoader : MonoBehaviour
 {
     public string currentSceneName;
+    public GameObject playerInst;
     public GameObject player;
-    public GameObject currentBackPoint;
+    public Transform currentBackPoint;
+    public bool wantsToBack;
     private void Start()
     {
-        currentSceneName = SceneManager.GetActiveScene().name;
+        player = GameObject.FindWithTag("Player");
     }
 
     //El método mirará la escena en la que se encuentra, y en base a eso, cargará la siguiente escena
@@ -35,6 +38,7 @@ public class PlayerSceneLoader : MonoBehaviour
 
         if(collision.gameObject.name == "LevelBack")
         {
+            DontDestroyOnLoad(player);
             if (currentSceneName == "Nivel2")
             {
                 SceneManager.LoadScene("Nivel1");
@@ -47,8 +51,14 @@ public class PlayerSceneLoader : MonoBehaviour
             {
                 SceneManager.LoadScene("Nivel3");
             }
+            
+            if (GameObject.FindGameObjectsWithTag("Player").Length < 1)
+            {
+                
+            }
         }
 
 
     }
+    
 }
