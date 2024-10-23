@@ -4,13 +4,23 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    public float actionTime;
+    public SpriteRenderer sprite;
+    public Animator animator;
+    public RuntimeAnimatorController idle;
+    public RuntimeAnimatorController walk;
+
+    public float moveTime;
+    public float stopTime;
     public int moveState;
     public float movementSpeed;
     // Start is called before the first frame update
     void Start()
     {
-        InvokeRepeating("directionChanger", 0f, actionTime);
+        sprite = gameObject.GetComponent<SpriteRenderer>();
+        animator = gameObject.GetComponent<Animator>();
+        animator.runtimeAnimatorController = idle;
+
+        StartCoroutine(directionChanger());
     }
 
     // Update is called once per frame
@@ -18,17 +28,28 @@ public class Enemy : MonoBehaviour
     {
         if (moveState == 1)
         {
-            gameObject.transform.position += new Vector3((movementSpeed * 0.002f), 0, 0);
+            sprite.flipX = false;
+            gameObject.transform.position += new Vector3((movementSpeed * Time.deltaTime), 0, 0);           
         } else if (moveState == 3)
         {
-            gameObject.transform.position += new Vector3(-(movementSpeed * 0.002f), 0, 0);
+            sprite.flipX = true;
+            gameObject.transform.position += new Vector3(-(movementSpeed * Time.deltaTime), 0, 0);           
         }
     }
 
     public IEnumerator directionChanger()
     {
-        moveState++;
-        if (moveState > 3) moveState = 0;
-        yield return null;
+        while (true)
+        {
+            moveState++;
+            if (moveState == 1 || moveState == 3)
+            {
+                yield return new WaitForSeconds(moveTime);
+            }            
+            if (moveState > 3) moveState = 0;
+            if (moveState == 2 || moveState == 0) { 
+                yield return new WaitForSeconds(stopTime);
+            }
+        }
     }
 }

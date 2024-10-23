@@ -40,12 +40,12 @@ public class Movimiento : MonoBehaviour
         //Mueve al personaje cuando se pulsa D o A en la direccíón correspondiente
         if (Input.GetKey(KeyCode.D))
         {               
-            transform.position = transform.position + new Vector3(speed * 0.002f, 0, 0);
+            transform.position = transform.position + new Vector3(speed * Time.deltaTime, 0, 0);
             sprite.flipX = false;
         }
         else if (Input.GetKey(KeyCode.A))
         {
-            transform.position = transform.position + new Vector3(-(speed * 0.002f), 0, 0);
+            transform.position = transform.position + new Vector3(-(speed * Time.deltaTime), 0, 0);
             sprite.flipX = true;
         }
 
