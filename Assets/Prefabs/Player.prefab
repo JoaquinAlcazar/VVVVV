@@ -128,6 +128,9 @@ MonoBehaviour:
   idle: {fileID: 9100000, guid: 10c251e34946afe4bab10384238abaa7, type: 2}
   walk: {fileID: 9100000, guid: 1513c1ae146ca7240a90d6f1c7934d4f, type: 2}
   myPrefab: {fileID: 2857784882270633263}
+  caminarSound: {fileID: 8300000, guid: 59705d8e158db204abba3bbf0d2ef673, type: 3}
+  gravitySound: {fileID: 8300000, guid: 381ea2ab83000a94abcbff3854c99827, type: 3}
+  deathSound: {fileID: 8300000, guid: cb1b687fb578c8f40b0105a891634581, type: 3}
 --- !u!212 &5954126933435902232
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -215,4 +218,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentSceneName: 
   player: {fileID: 2857784882270633263}
+  spriteRenderer: {fileID: 0}
   currentBackPoint: {fileID: 0}
+  currentSpawnPoint: {fileID: 0}
+  wantsToBack: 0

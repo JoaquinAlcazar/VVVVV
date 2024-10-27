@@ -11,6 +11,7 @@ public class PlayerSceneLoader : MonoBehaviour
     public GameObject player;
     public SpriteRenderer spriteRenderer;
     public Transform currentBackPoint;
+    public Transform currentSpawnPoint;
     public bool wantsToBack;
     private void Start()
     {
@@ -34,6 +35,10 @@ public class PlayerSceneLoader : MonoBehaviour
             if (currentSceneName == "Nivel3")
             {
                 SceneManager.LoadScene("Nivel4");
+            }
+            if (currentSceneName == "Nivel4")
+            {
+                SceneManager.LoadScene("MainMenu");
             }
         }
 
@@ -64,6 +69,11 @@ public class PlayerSceneLoader : MonoBehaviour
             spriteRenderer = player.GetComponent<SpriteRenderer>();
             spriteRenderer.flipX = true;
             wantsToBack = false;
+        }
+        else {
+            player = GameObject.FindWithTag("Player");
+            currentSpawnPoint = GameObject.FindWithTag("SpawnPoint").transform;
+            player.transform.position = currentSpawnPoint.position;
         }
     }
 
