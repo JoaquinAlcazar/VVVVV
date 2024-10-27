@@ -38,7 +38,11 @@ public class PlayerSceneLoader : MonoBehaviour
             }
             if (currentSceneName == "Nivel4")
             {
-                SceneManager.LoadScene("MainMenu");
+                SceneManager.LoadScene("NivelWin");
+            }
+            if (currentSceneName == "NivelWin")
+            {
+                SceneManager.LoadScene("Nivel1");
             }
         }
 
@@ -56,8 +60,17 @@ public class PlayerSceneLoader : MonoBehaviour
             if (currentSceneName == "Nivel4")
             {
                 SceneManager.LoadScene("Nivel3");
-            }           
-        }      
+            }
+            if (currentSceneName == "NivelWin")
+            {
+                SceneManager.LoadScene("Nivel4");
+            }
+        }
+
+        if (collision.gameObject.name == "GameEnder")
+        {
+            Application.Quit();
+        }
     }
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {

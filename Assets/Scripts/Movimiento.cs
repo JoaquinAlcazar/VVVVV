@@ -29,12 +29,12 @@ public class Movimiento : MonoBehaviour
         audioSourceWalk.clip = caminarSound;
         audioSourceWalk.loop = true;
         audioSourceWalk.pitch = 0.3f;
-        audioSourceWalk.volume = 1f;
+        audioSourceWalk.volume = 0.5f;
 
         audioSourceGravity = gameObject.AddComponent<AudioSource>();
         audioSourceGravity.clip = gravitySound;
         audioSourceGravity.loop = false;
-        audioSourceGravity.volume = 1f;
+        audioSourceGravity.volume = 0.5f;
 
         audioSourceDeath = gameObject.AddComponent<AudioSource>();
         audioSourceDeath.clip = deathSound;
