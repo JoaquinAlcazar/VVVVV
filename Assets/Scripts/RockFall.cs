@@ -13,13 +13,13 @@ public class RockFall : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        gameObject.transform.position = gameObject.transform.position + new Vector3(0, -0.01f, 0);
-        gameObject.transform.Rotate(0, 0, 0.2f);
+        gameObject.transform.position = gameObject.transform.position + new Vector3(0, -10 * Time.deltaTime, 0);
+        gameObject.transform.Rotate(0, 0, 1f);
     }
 
     public IEnumerator killMyself()
     {
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(4);
         Destroy(gameObject);
     }
 }

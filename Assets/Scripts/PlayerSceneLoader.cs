@@ -3,15 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.U2D;
+using static UnityEditor.PlayerSettings;
 
 public class PlayerSceneLoader : MonoBehaviour
 {
     public string currentSceneName;
     public GameObject player;
-    public GameObject currentBackPoint;
+    public SpriteRenderer spriteRenderer;
+    public Transform currentBackPoint;
+    public Transform currentSpawnPoint;
+    public bool wantsToBack;
     private void Start()
     {
         currentSceneName = SceneManager.GetActiveScene().name;
+        SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
     //El método mirará la escena en la que se encuentra, y en base a eso, cargará la siguiente escena
@@ -31,10 +36,19 @@ public class PlayerSceneLoader : MonoBehaviour
             {
                 SceneManager.LoadScene("Nivel4");
             }
+            if (currentSceneName == "Nivel4")
+            {
+                SceneManager.LoadScene("NivelWin");
+            }
+            if (currentSceneName == "NivelWin")
+            {
+                SceneManager.LoadScene("Nivel1");
+            }
         }
 
         if(collision.gameObject.name == "LevelBack")
         {
+            wantsToBack = true;
             if (currentSceneName == "Nivel2")
             {
                 SceneManager.LoadScene("Nivel1");
@@ -47,8 +61,33 @@ public class PlayerSceneLoader : MonoBehaviour
             {
                 SceneManager.LoadScene("Nivel3");
             }
+            if (currentSceneName == "NivelWin")
+            {
+                SceneManager.LoadScene("Nivel4");
+            }
         }
 
-
+        if (collision.gameObject.name == "GameEnder")
+        {
+            Application.Quit();
+        }
     }
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if (wantsToBack)
+        {
+            player = GameObject.FindWithTag("Player");
+            currentBackPoint = GameObject.FindWithTag("BackPoint").transform;
+            player.transform.position = currentBackPoint.position;
+            spriteRenderer = player.GetComponent<SpriteRenderer>();
+            spriteRenderer.flipX = true;
+            wantsToBack = false;
+        }
+        else {
+            player = GameObject.FindWithTag("Player");
+            currentSpawnPoint = GameObject.FindWithTag("SpawnPoint").transform;
+            player.transform.position = currentSpawnPoint.position;
+        }
+    }
+
 }
